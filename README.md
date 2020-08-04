@@ -1,7 +1,6 @@
 # JavaScript30
- 
-Starter Files + Completed solutions for the JavaScript 30 Day Challenge.
-Grab the course at https://JavaScript30.com<br>
+	Starter Files + Completed solutions for the JavaScript 30 Day Challenge.<br>
+	Grab the course at https://JavaScript30.com
 
 # How to study
 	1. Start 버전을 똑같이 타이핑 한다 
@@ -10,5 +9,5 @@ Grab the course at https://JavaScript30.com<br>
 	3. 동영상과 finished 버전을 참고해 코드 완성
 	4. 이해가 안되고 어려웠던 부분을 확인하여 정리
 		- 코드 수정해가며 테스트
- 5. 완성되면 GitHub push
+	5. 완성되면 GitHub push
 
