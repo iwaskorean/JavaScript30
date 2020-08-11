@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Console Tricks! | hsw</title>
+
+</head>
+<body>
+    <p onclick="makeGreen()">xBreakxDOWNx</p>
+
+<script>
+    const dogs = [{ name: 'Snickers', age: 2}, {name: 'hugo', age: 8}];
+
+    function makeGreen() {
+        const p = document.querySelector('p');
+        p.style.color = '#BADA55';
+        p.style.fontSize = '50px';
+    }
+
+    // Regular // 일반적인 콘솔 추력
+    console.log('hello');
+
+    // Interpolated //%s 이용 스트링 입력 가능
+    console.log('Hello My name is %s !','HAN')
+    
+    // Styled // %c이용 콘솔 출력 메시지에 css 속성 적용 가능
+    console.log('%c It is text with style', 'font-size:20px; color:red;');
+
+    // warning!  //경고 메시지 출력
+    console.warn("경고 경고 !!");
+
+    // Error :|  // 에러 메시지 출력
+    console.error("에러 에러 !!");
+
+    // Info // 정보 메시지 출력 
+    console.info("this is DAY09 on js30 challange");
+
+    // Testing // 조건식의 t or f 를 통한 메시지 출력
+    const p = document.querySelector('p');
+    console.assert(p.classList.contains('ouch'), 'That is wrong!');
+    console.assert(1===1, 'That is wrong !'); // true라서 메시지 출력 X
+    
+    // clearing //콘솔 출력 내용들 clear
+    console.clear();
+
+    // Viewing DOM Elements // dom 엘리먼트 내용 확인
+    console.dir(p);
+
+    // Grouping together // 그룹핑을 이용한 콘솔 출력
+    dogs.forEach(dog => {
+      console.groupCollapsed(`${dog.name}`);
+      console.log(`This is ${dog.name}`);
+      console.log(`${dog.name} is ${dog.age} years old`);
+      console.log(`${dog.name} is ${dog.age * 7} dog years old`);
+      console.groupEnd(`${dog.name}`);
+    });
+
+    // counting // 일치하는 객체 내용 카운팅 
+    console.count('A');
+    console.count('A');
+    console.count('B');
+    console.count('B');
+    console.count('A');
+    console.count('C');
+    console.count('D');
+    console.count(2);
+    console.count(1);
+    console.count(2);
+    console.count(2);
+    
+    console.clear();
+
+    //fetch : 네트워크에서 JSON 파일을 가져 와서 콘솔에 출력
+    console.time('fetching data');
+    fetch('https://api.github.com/users/wesbos')
+      .then(data => data.json())
+      .then(data => {
+        console.timeEnd('fetching data');
+        console.log(data);
+      });
+
+      // table 형태로 콘솔 출력
+    console.table(dogs);
+</script>
+</body>
+</html>
