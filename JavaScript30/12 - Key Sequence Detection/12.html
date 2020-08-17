@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Key Detection | hsw</title>
+    <script type="text/javascript" src="https://www.cornify.com/js/cornify.js"></script>
+</head>
+<body>
+    <script>
+        const pressed = [];
+        const secretCode = 'wesbos';
+
+        window.addEventListener('keyup', (e) => {
+            console.log(e.key);
+            pressed.push(e.key); // keyup한 키의 값을 pressed Array에 저장 
+            pressed.splice(-secretCode.length - 1, pressed.length - secretCode.length);
+            // splice에 음수를 넣을경우 뒤에서 부터
+            // splice(start, cnt) -> start index부터 cnt 갯수 만큼의 배열 요소 잘라냄
+            // splice(start, cnt, item) -> 잘라내고 item 을 첫번째 인덱스에 push
+            
+             if(pressed.join('').includes(secretCode)){
+                console.log('DING DING!');
+                cornify_add();
+            }
+            // pressed.join('')을 하는 이유는 Array객체에 join을 할 경우 문자열처럼 됨
+            // pressed Array에 wesbos 포함하면 cornify 실행    
+            console.log(pressed);
+        });
+
+        const exArray = [0, 1, 2, 3, 4, 5];
+        const a = exArray.splice(0,3,6);
+        
+        console.log(exArray);   // "6" 3 4 5
+        console.log(a); // 1 2 3
+        
+        
+    </script>
+    
+</body>
+</html>
