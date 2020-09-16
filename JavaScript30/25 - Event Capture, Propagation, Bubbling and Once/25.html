@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Understanding JavaScript's Capture</title>
+</head>
+<body class="bod">
+    <div class="one">
+        <div class="two">
+            <div class="three">
+
+            </div>
+        </div>
+    </div>
+
+
+<style>
+    html{
+        box-sizing: border-box;
+    }
+
+    *, *:before, *:after{
+        box-sizing: inherit;
+    }
+
+    div{
+        width: 100%;
+        padding: 100px;
+    }
+
+    .one{
+        background-color: thistle;
+    }
+
+    .two{
+        background: mistyrose;
+    }
+
+    .three{
+        background: coral;
+    }
+</style>
+
+<button>btn</button>
+
+<script>
+    const divs = document.querySelectorAll('div');
+
+    function logText(e){
+        console.log(this.classList.value);
+        // console.log(this);
+        // stopPropagation() 없이 실행할 경우 three two one
+        
+        e.stopPropagation();        
+        // stopPropagation() 할 경우 bublling이 멈추며 해당 객체만 선택
+        
+    }
+
+    divs.forEach(div => div.addEventListener('click', logText),{
+        capture: false,
+        once: true
+    });
+    
+    const button = document.querySelector('button');
+    button.addEventListener('click', () => {
+        console.log('Click!!!');
+    }, {
+        once: true
+    });
+    // on
+
+</script>
+</body>
+</html>
