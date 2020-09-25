@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Video Speed Scrubber | hsw</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="hsw.css">
 </head>
 <body>
 
@@ -28,10 +28,10 @@
         const height = Math.round(percent*100) + '%'
     
         const playbackRate = percent*(max -min) + min;
-        console.log(playbackRate);
 
         bar.style.height = height;
         bar.textContent = playbackRate.toFixed(2) +'x';
+        //toFixed(n)은 소수점 n+1의 자리에서 반올림 후 소수점 n자리까지 나타냄
         video.playbackRate = playbackRate;
     }
 
