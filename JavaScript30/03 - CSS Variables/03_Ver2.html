@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Scoped CSS Variables and JS | hsw</title>
+</head>
+<body>
+    <h2>Update CSS Variables with <span class="hl">JS</span></h2>
+    
+    <div class="controls">
+        <!-- <lable for="spacing">Spacing</lable>
+        <input id="spacing" type="range" name="spacing" min="10" max="200" value="10" data-sizing="px"> -->
+        <lable for='sizing'>Size</lable>
+        <input id='sizing' type="range" name="sizing" min="100" max="1000" value="500" data-sizing="px">
+        
+        <label for="blur">Blur:</label>
+        <input id="blur" type="range" name="blur" min="0" max="25" value="10" data-sizing="px">
+
+        <label for="base">Base Color</label>
+        <input id="base" type="color" name="base" value="#ffc600">
+    </div>
+
+    <img src="https://source.unsplash.com/7bwQXzbF6KE/500x500">
+    
+    
+    <style>
+     :root{
+         --base: #ffc600;
+         --spacing: 10px;
+         --blur: 0px;
+         --sizing: 500px;
+     }
+     
+     img{
+         padding: var(--spacing);
+         background: var(--base);
+         filter: blur(var(--blur));
+         width: var(--sizing);
+         height: var(--sizing);
+     }
+
+     .hl{
+         color: var(--base);
+     }
+
+     body{ 
+        text-align: center;
+        background-color:  #193549;
+        color: white;
+        font-family: 'Helvetica', sans-serif;
+        font-weight: 100;
+        font-size: 50px;
+        }
+
+     .controls {
+         margin-bottom: 50px;
+     }
+
+     input{
+         width: 100px;
+     }
+    </style>
+    
+      <script>
+        const inputs = document.querySelectorAll('.controls input');
+        
+        function handleUpdate(){
+            const suffix = this.dataset.sizing || '';
+            // console.log(suffix);
+            // console.log(this.value);
+            document.documentElement.style.setProperty(`--${this.name}`, `${this.value+suffix}`);
+        }
+
+
+        inputs.forEach(input => input.addEventListener('change', handleUpdate));
+        
+
+
+
+
+        //   const inputs = document.querySelectorAll('.controls input');
+
+        //  function handleUpdate(){
+        //      const suffix = this.dataset.sizing || '';
+        //     //  console.log(suffix);
+        //     //  console.log(this.value);
+        //     // console.log(this.name);
+        //     // console.log(this.value+suffix);
+            
+        //      document.documentElement.style.setProperty(`--${this.name}`, this.value+suffix);
+        //  }
+        
+        //  inputs.forEach(n => n.addEventListener('change', handleUpdate));
+
+        // 이미지의 각 애트리뷰트는 css의 :root 애트리뷰트들을 이용한 애트리뷰트들
+        // input 태그의 value 를 이용한 핸들러로 root 값을 대체해가며 이미지의 속성을 변경
+        // element.style."~" = ㅁㅁ 이 아닌 document.documentElement.style.setProperty(arg1, arg2)을 이용한 스타일 속성 변경 
+        // inputs 의 값이 변할때마다 호출되는 change 이벤트리스너를 통한 동작
+      </script>
+    
+    </body>
+    </html>
