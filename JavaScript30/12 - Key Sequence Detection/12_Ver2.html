@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Key Detection | hsw</title>
+    <script type="text/javascript" src="https://www.cornify.com/js/cornify.js"></script>
+</head>
+<body>
+    <p>ENTER THE SECRET CODE WITH 6 LETTERS !</p>
+    <p class="press"></p>
+    <script>
+        const pressed = [];
+
+        const secretCode = 'sewook';
+        const secretCodeCap = 'SEWOOK';
+        const press = document.querySelector('.press');
+        window.addEventListener('keyup', (e) => {
+            console.log(e.key);
+            pressed.push(e.key); 
+            pressed.splice(-secretCode.length - 1, pressed.length - secretCode.length);
+            
+            press.innerHTML = pressed;
+            
+             if(pressed.join('').includes(secretCode) || pressed.join('').includes(secretCodeCap) ){
+                console.log('DING DING!');
+                cornify_add();
+                // press.innerHTML = "";
+            }
+
+            console.log(pressed);
+        });
+
+        
+    </script>
+    <style>
+    body{
+        height: 97vh;
+        background: no-repeat linear-gradient(to bottom, rgb(15, 0, 102), rgb(187, 57, 248));
+        background-size: cover;
+    }
+    p{
+        margin:100px auto;
+        text-align:center;
+        font-weight: 700;
+        font-size: 30px;
+        color: white;
+    }
+    </style>
+    
+</body>
+</html>
